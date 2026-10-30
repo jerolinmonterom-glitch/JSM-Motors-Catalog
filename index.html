@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSM S.R.L. | Exclusividad en Hiperdeportivos y Motocicletas de Alta Gama</title>
+
+  <!-- CDNs Oficiales -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --jsm-bg: #050508;
+      --jsm-card: #131722;
+      --jsm-purple: #9d4edd;
+      --jsm-cyan: #00f0ff;
+      --jsm-gold: #f39c12;
+      --jsm-border: rgba(157, 78, 221, 0.25);
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--jsm-bg);
+      color: #f1f5f9;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .brand-title {
+      font-family: 'Syncopate', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .navbar-jsm {
+      background: rgba(5, 5, 8, 0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--jsm-border);
+    }
+
+    .hero-jsm {
+      background: radial-gradient(circle at 50% 10%, rgba(157, 78, 221, 0.18), transparent 60%),
+                  radial-gradient(circle at 90% 90%, rgba(0, 240, 255, 0.12), transparent 50%),
+                  var(--jsm-bg);
+      padding: 70px 0 40px;
+      border-bottom: 1px solid var(--jsm-border);
+    }
+
+    .card-jsm {
+      background-color: var(--jsm-card);
+      border: 1px solid var(--jsm-border);
+      border-radius: 20px;
+      transition: all 0.4s ease;
+      overflow: hidden;
+    }
+    .card-jsm:hover {
+      transform: translateY(-8px);
+      border-color: var(--jsm-cyan);
+      box-shadow: 0 15px 35px rgba(0, 240, 255, 0.15);
+    }
+    .card-jsm img {
+      height: 220px;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .card-jsm:hover img {
+      transform: scale(1.05);
+    }
+
+    .badge-jsm-offer {
+      background: linear-gradient(135deg, var(--jsm-purple), #7b2cbf);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 30px;
+    }
+
+    .text-purple-neon { color: var(--jsm-purple) !important; }
+    .text-cyan-neon { color: var(--jsm-cyan) !important; }
+    .text-gold-neon { color: var(--jsm-gold) !important; }
+
+    .floating-cart-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1050;
+      background: linear-gradient(135deg, var(--jsm-purple), var(--jsm-cyan));
+      color: #050508;
+      border: none;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      box-shadow: 0 8px 25px rgba(157, 78, 221, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      transition: transform 0.3s ease;
+    }
+    .floating-cart-btn:hover {
+      transform: scale(1.1);
+    }
+    .cart-badge-count {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      background: var(--jsm-gold);
+      color: #000;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 8px;
+      border-radius: 50%;
+    }
+
+    .modal-content {
+      background-color: var(--jsm-card) !important;
+      color: #f1f5f9 !important;
+      border: 1px solid var(--jsm-border);
+      border-radius: 20px;
+    }
+    .form-control, .form-select {
+      background-color: #080a0f !important;
+      border: 1px solid #1f2433 !important;
+      color: #ffffff !important;
+    }
+
+    /* Contenedor circular perfecto con ajuste automático */
+    .creator-img-container {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 15px auto;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--jsm-cyan);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+      background-color: #1a1e29;
+    }
+
+    .creator-profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-jsm sticky-top py-3">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand d-flex align-items-center gap-3" href="#">
+        <img src="https://hips.hearstapps.com/hmg-prod/images/bugatti-tourbillon-1-66755b9b2188d.jpg?crop=0.476xw:0.775xh;0.235xw,0.125xh&resize=1200:*" alt="Logo" width="45" height="45" class="rounded-circle border border-2 border-purple object-fit-cover">
+        <div>
+          <span class="brand-title fs-5 text-cyan-neon">JSM S.R.L.</span>
+          <span class="d-block text-muted" style="font-size: 8px; letter-spacing: 3px;">EXCLUSIVIDAD & MOTOR</span>
+        </div>
+      </a>
+
+      <div class="d-flex align-items-center gap-2 ms-auto">
+        <div class="input-group" style="width: 260px;">
+          <span class="input-group-text bg-dark border-secondary text-cyan-neon"><i class="fas fa-search"></i></span>
+          <input type="text" id="searchInput" class="form-control form-control-sm" placeholder="Buscar modelo...">
+        </div>
+        <button class="btn btn-outline-light rounded-pill px-3 fw-bold btn-sm" onclick="filterCatalog('todos')">Todos</button>
+        <button class="btn btn-outline-info rounded-pill px-3 fw-bold btn-sm text-cyan-neon border-cyan" onclick="filterCatalog('vehiculos')">Autos</button>
+        <button class="btn btn-outline-purple rounded-pill px-3 fw-bold btn-sm text-purple-neon" style="border-color:var(--jsm-purple);" onclick="filterCatalog('motos')">Motos</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero-jsm text-center">
+    <div class="container">
+      <h1 class="display-5 fw-extrabold text-cyan-neon mb-2">CATÁLOGO OFICIAL JSM S.R.L.</h1>
+      <p class="text-muted small mx-auto" style="max-width: 600px;">
+        Selección exclusiva de vehículos y motocicletas de alta gama. Adquisición directa y configuración de alquileres con contratos automatizados.
+      </p>
+    </div>
+  </header>
+
+  <!-- Grid Principal del Catálogo -->
+  <main class="container my-4">
+    <div id="catalogGrid" class="row g-4"></div>
+  </main>
+
+  <!-- NUEVA: Sección Sobre la Empresa -->
+  <section class="container my-5">
+    <div class="card-jsm p-4 p-md-5 border-cyan">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <span class="badge bg-outline-purple text-purple-neon border border-purple rounded-pill px-3 mb-2" style="font-size: 11px;">Nuestra Identidad</span>
+          <h2 class="text-cyan-neon fw-bold mb-3 fs-3">ACERCA DE JSM S.R.L.</h2>
+          <p class="text-light leading-relaxed mb-3">
+            <strong>JSM S.R.L.</strong> es la empresa líder en la comercialización y alquiler automatizado de hypercars, superdeportivos y motocicletas de alta competición. Fundada bajo los más altos estándares de ingeniería y lujo, ofrecemos experiencias inigualables para coleccionistas y entusiastas del motor.
+          </p>
+          <p class="text-muted small mb-4">
+            Nuestro compromiso se basa en la transparencia, la seguridad contractual mediante pasarelas digitales y una flota rigurosamente seleccionada para garantizar potencia, exclusividad y elegancia en cada kilómetro.
+          </p>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <div class="p-3 rounded-3 bg-black bg-opacity-40 border border-secondary">
+                <i class="fas fa-shield-alt text-cyan-neon fs-4 mb-2"></i>
+                <h6 class="text-white fw-bold mb-1">Garantía Total</h6>
+                <p class="text-muted small mb-0">Inspección técnica certificada en cada unidad.</p>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="p-3 rounded-3 bg-black bg-opacity-40 border border-secondary">
+                <i class="fas fa-bolt text-purple-neon fs-4 mb-2"></i>
+                <h6 class="text-white fw-bold mb-1">Contratos VIP</h6>
+                <p class="text-muted small mb-0">Automatización de alquileres y facturación PDF instantánea.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="position-relative rounded-4 overflow-hidden border border-secondary shadow-lg">
+            <img src="https://hips.hearstapps.com/hmg-prod/images/bugatti-tourbillon-1-66755b9b2188d.jpg" alt="JSM Showroom" class="img-fluid w-100" style="height: 350px; object-fit: cover;">
+            <div class="position-absolute bottom-0 start-0 end-0 p-4 bg-gradient-to-t from-black to-transparent" style="background: linear-gradient(to top, #050508, transparent);">
+              <span class="text-gold-neon fw-bold small"><i class="fas fa-star me-1"></i> Excelencia sin Límites</span>
+              <h5 class="text-white fw-bold mb-0">Innovación y Potencia en el Motor</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Creadora -->
+  <section class="container my-5 py-4">
+    <div class="card-jsm p-4 p-md-5">
+      <div class="row align-items-center g-4">
+        <div class="col-md-4 text-center">
+          <div class="creator-img-container">
+            <img src="perfil.jpg" alt="Jerolin Montero" class="creator-profile-img">
+          </div>
+          <h4 class="text-white fw-bold mb-1">Jerolin Montero</h4>
+          <span class="badge bg-outline-info text-cyan-neon border border-info rounded-pill px-3" style="font-size: 11px;">Desarrolladora & Estudiante de Ingeniería</span>
+        </div>
+        <div class="col-md-8">
+          <h3 class="text-purple-neon fw-bold mb-3"><i class="fas fa-user-gear me-2"></i>Sobre la Creadora</h3>
+          <p class="text-light lead fs-6">
+            Estudiante de <strong>Ingeniería en Sistemas</strong> y Técnica en Soporte de Redes y Sistemas Informáticos. Apasionada por el diseño web moderno, la creación de interfaces con estética neón y la programación de soluciones de alto nivel.
+          </p>
+          <hr class="border-secondary my-3">
+          <h5 class="text-cyan-neon fw-bold mb-3"><i class="fas fa-address-book me-2"></i>Contacto Directo</h5>
+          <div class="row g-2 text-muted small">
+            <div class="col-sm-6">
+              <i class="fas fa-envelope text-purple-neon me-2"></i><strong>Email:</strong> jerolin.montero@jsnmotors.com
+            </div>
+            <div class="col-sm-6">
+              <i class="fas fa-phone text-cyan-neon me-2"></i><strong>Teléfono:</strong> +1 (809) 555-0199
+            </div>
+            <div class="col-sm-6">
+              <i class="fab fa-github text-purple-neon me-2"></i><strong>GitHub:</strong> jerolinmonterom-glitch
+            </div>
+            <div class="col-sm-6">
+              <i class="fab fa-youtube text-cyan-neon me-2"></i><strong>YouTube:</strong> @JerolinMontero-g9r
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Botón Flotante Carrito -->
+  <button class="floating-cart-btn" onclick="openCartModal()" title="Ver Carrito">
+    <i class="fas fa-shopping-cart"></i>
+    <span id="cartItemCount" class="cart-badge-count">0</span>
+  </button>
+
+  <!-- Modal Alquiler -->
+  <div class="modal fade" id="rentalModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content p-4">
+        <div class="modal-header border-bottom border-secondary">
+          <h5 class="modal-title text-cyan-neon fw-bold"><i class="fas fa-key me-2"></i> Configuración de Alquiler</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="rentalVehicleCode">
+          <div class="row align-items-center mb-3">
+            <div class="col-md-5">
+              <img id="rentalModalImg" src="" alt="Unidad" class="img-fluid rounded-3 border border-secondary" style="height: 160px; width: 100%; object-fit: cover;">
+            </div>
+            <div class="col-md-7">
+              <h5 id="rentalModalTitle" class="text-white fw-bold"></h5>
+              <p id="rentalModalSpecs" class="text-muted small mb-2"></p>
+              <div class="d-flex gap-3">
+                <div><span class="text-muted small">Día:</span> <strong id="rentalDayPrice" class="text-purple-neon"></strong></div>
+                <div><span class="text-muted small">Hora:</span> <strong id="rentalHourPrice" class="text-cyan-neon"></strong></div>
+              </div>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label text-muted small">Modalidad</label>
+              <select id="rentalModeSelect" class="form-select form-select-sm" onchange="calculateRentalTotal()">
+                <option value="dia">Por Día(s)</option>
+                <option value="hora">Por Hora(s)</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label text-muted small">Duración</label>
+              <input type="number" id="rentalDurationInput" class="form-control form-control-sm" value="2" min="1" oninput="calculateRentalTotal()">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label text-muted small">Fecha Inicio</label>
+              <input type="date" id="rentalStartDate" class="form-control form-control-sm" value="2026-11-01">
+            </div>
+          </div>
+          <div class="mt-3 p-3 rounded-3 bg-black bg-opacity-50 border border-secondary d-flex justify-content-between align-items-center">
+            <span class="text-muted small">Subtotal Renta: <strong id="rentalSubtotalDisplay" class="text-cyan-neon fs-5">$0.00</strong></span>
+            <span class="text-muted small">Fianza: <strong class="text-white">$1,200.00</strong></span>
+          </div>
+        </div>
+        <div class="modal-footer border-top border-secondary">
+          <button type="button" class="btn btn-outline-light btn-sm rounded-pill px-3" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-warning btn-sm rounded-pill px-4 fw-bold" onclick="confirmRentalToCart()">Agregar al Carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Carrito / Checkout -->
+  <div class="modal fade" id="cartModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content p-4">
+        <div class="modal-header border-bottom border-secondary">
+          <h5 class="modal-title text-purple-neon fw-bold"><i class="fas fa-file-invoice-dollar me-2"></i> Carrito & Pasarela JSM S.R.L.</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <h6 class="text-uppercase text-muted fw-bold mb-3">Ítems Seleccionados</h6>
+              <div id="cartItemsList" class="overflow-y-auto pe-2" style="max-height: 320px;"></div>
+              <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary">
+                <button class="btn btn-outline-danger btn-sm rounded-pill" onclick="clearCart()"><i class="fas fa-trash me-1"></i> Vaciar</button>
+                <div class="text-end">
+                  <span class="text-muted small">Subtotal: <strong id="cartSubtotalText" class="text-white">$0.00</strong></span><br>
+                  <span class="text-muted small">Fianza: <strong id="cartDepositText" class="text-white">$0.00</strong></span>
+                  <div class="fs-5 text-cyan-neon fw-bold mt-1">Total: <span id="cartTotalText">$0.00</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 border-start border-secondary ps-lg-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h6 class="text-uppercase text-muted fw-bold mb-0">Datos del Cliente</h6>
+                <button type="button" class="btn btn-sm btn-outline-info rounded-pill py-0" style="font-size: 11px;" onclick="fillDemoData()">⚡ Rellenar VIP</button>
+              </div>
+              <form id="checkoutForm" class="row g-2">
+                <div class="col-md-6">
+                  <label class="form-label text-muted" style="font-size: 11px;">Nombre</label>
+                  <input type="text" id="clientName" class="form-control form-control-sm" value="Jerolin Montero" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted" style="font-size: 11px;">Cédula / ID</label>
+                  <input type="text" id="clientId" class="form-control form-control-sm" value="001-1234567-8" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted" style="font-size: 11px;">Licencia</label>
+                  <input type="text" id="clientLicense" class="form-control form-control-sm" value="DO-8874125-VIP" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted" style="font-size: 11px;">Teléfono</label>
+                  <input type="text" id="clientPhone" class="form-control form-control-sm" value="+1 (809) 555-0199" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-muted" style="font-size: 11px;">Correo</label>
+                  <input type="email" id="clientEmail" class="form-control form-control-sm" value="jerolin.montero@jsnmotors.com" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-muted" style="font-size: 11px;">Dirección</label>
+                  <input type="text" id="clientAddress" class="form-control form-control-sm" value="Av. Anacaona #105, Santo Domingo" required>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-top border-secondary">
+          <button type="button" class="btn btn-outline-light btn-sm rounded-pill px-3" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-success btn-sm rounded-pill px-4 fw-bold" onclick="processCheckoutAndPDF()"><i class="fas fa-file-pdf me-1"></i> Generar PDF Oficial</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-black text-center py-4 mt-5 border-top border-secondary">
+    <div class="container">
+      <p class="text-muted small mb-1">© 2026 JSN S.R.L. | Desarrollado por <span class="text-cyan-neon fw-bold">Jerolin Montero</span></p>
+      <div class="d-flex justify-content-center gap-3 text-muted" style="font-size: 14px;">
+        <a href="https://github.com/jerolinmonterom-glitch" target="_blank" class="text-muted text-decoration-none"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://www.youtube.com/@JerolinMontero-g9r" target="_blank" class="text-muted text-decoration-none"><i class="fab fa-youtube"></i> YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <script>
+    // Catálogo completo con vehículos y motos
+    const globalCatalog = {
+      "vehiculos": [
+        {
+          "codigo": 701,
+          "marca": "Bugatti",
+          "tipo": "Hypercar",
+          "modelo": "Tourbillon V16",
+          "caracteristicas": "Motor V16 atmosférico de 8.3L combinado con triple motor eléctrico, 1,800 HP.",
+          "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbb-nGRiM6lWB5I_5kZckjfakErTsC0w93VjtNH8YDag&s=10",
+          "motor": "8.3L V16 Híbrido",
+          "combustible": "Híbrido",
+          "categoria": "vehiculos",
+          "precio_venta": 4500000,
+          "precio_alquiler_hora": 2200,
+          "precio_alquiler_dia": 18000,
+          "oferta_alquiler": "👑 Edición Inaugural",
+          "existencia": 1
+        },
+        {
+          "codigo": 702,
+          "marca": "Koenigsegg",
+          "tipo": "Megacar",
+          "modelo": "Jesko Attack",
+          "caracteristicas": "Aerodinámica de pista extrema, downforce de 1,400 kg a 275 km/h, 1,600 HP.",
+          "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxLWa8CBqzjmGJtPHtBQBkmK-UG5nhrPGvWCzamjZvcw&s=10",
+          "motor": "5.0L V8 Twin-Turbo",
+          "combustible": "Gasolina E85",
+          "categoria": "vehiculos",
+          "precio_venta": 3550000,
+          "precio_alquiler_hora": 1700,
+          "precio_alquiler_dia": 13500,
+          "oferta_alquiler": "⚡ Incluye Ingeniero JSM",
+          "existencia": 2
+        },
+        {
+          "codigo": 703,
+          "marca": "Ferrari",
+          "tipo": "Superdeportivo",
+          "modelo": "SF90 XX Stradale",
+          "caracteristicas": "Versión extrema de circuito homologada para calle, 1,030 HP híbridos.",
+          "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCP92Dgs_okPRzMWAktb0pJDrDj84I1yaNayDUjR0i5Q&s=10",
+          "motor": "4.0L V8 Biturbo + 3 Motores",
+          "combustible": "Híbrido Enchufable",
+          "categoria": "vehiculos",
+          "precio_venta": 1100000,
+          "precio_alquiler_hora": 850,
+          "precio_alquiler_dia": 6800,
+          "oferta_alquiler": "🔥 Edición Limitada XX",
+          "existencia": 2
+        },
+        {
+          "codigo": 704,
+          "marca": "Lamborghini",
+          "tipo": "Hypercar",
+          "modelo": "Revuelto V12",
+          "caracteristicas": "V12 atmosférico de alta revolución con tracción total eléctrica, 1,015 HP.",
+          "imagen": "https://aashviindustries.in/wp-content/uploads/2025/11/2026-Lamborghini-Revuelto.webp",
+          "motor": "6.5L V12 Híbrido",
+          "combustible": "Híbrido Deportivo",
+          "categoria": "vehiculos",
+          "precio_venta": 790000,
+          "precio_alquiler_hora": 650,
+          "precio_alquiler_dia": 5200,
+          "oferta_alquiler": "⭐ Conductor VIP de Cortesía",
+          "existencia": 3
+        }
+      ],
+      "motos": [
+        {
+          "codigo": 801,
+          "marca": "Yamaha",
+          "tipo": "Superbike de Pista",
+          "modelo": "YZF-R1 Racing Edition",
+          "caracteristicas": "Motor de 4 cilindros crossplane de 998 cc, 200 HP con electrónica avanzada.",
+          "imagen": "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=500&auto=format&fit=crop",
+          "motor": "998 cc 4 Cilindros",
+          "combustible": "Gasolina de Alto Octanaje",
+          "categoria": "motos",
+          "precio_venta": 32000,
+          "precio_alquiler_hora": 150,
+          "precio_alquiler_dia": 950,
+          "oferta_alquiler": "🏁 Pack Circuito",
+          "existencia": 4
+        },
+        {
+          "codigo": 802,
+          "marca": "Ducati",
+          "tipo": "Superbike",
+          "modelo": "Panigale V4 SP2",
+          "caracteristicas": "Derivada de MotoGP, llantas de carbono y motor Desmosedici Stradale de 214 HP.",
+          "imagen": "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=500&auto=format&fit=crop",
+          "motor": "1,103 cc V4",
+          "combustible": "Gasolina Racing",
+          "categoria": "motos",
+          "precio_venta": 45000,
+          "precio_alquiler_hora": 200,
+          "precio_alquiler_dia": 1300,
+          "oferta_alquiler": "🔥 Edición Especial SP2",
+          "existencia": 2
+        },
+        {
+          "codigo": 803,
+          "marca": "Kawasaki",
+          "tipo": "Hyper-Sport",
+          "modelo": "Ninja H2R",
+          "caracteristicas": "Motor sobrealimentado de 998 cc con compresor volumétrico, 310 HP de pura potencia.",
+          "imagen": "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=500&auto=format&fit=crop",
+          "motor": "998 cc Supercharged",
+          "combustible": "Gasolina Racing",
+          "categoria": "motos",
+          "precio_venta": 56000,
+          "precio_alquiler_hora": 300,
+          "precio_alquiler_dia": 1800,
+          "oferta_alquiler": "⚡ Exclusiva Pista Cerrada",
+          "existencia": 2
+        },
+        {
+          "codigo": 804,
+          "marca": "BMW",
+          "tipo": "Superbike",
+          "modelo": "S1000RR M Package",
+          "caracteristicas": "Tecnología ShiftCam, rines de fibra de carbono M y chasis optimizado para competición.",
+          "imagen": "https://images.unsplash.com/photo-1558981285-6f0c94958bb6?q=80&w=500&auto=format&fit=crop",
+          "motor": "999 cc 4 Cilindros",
+          "combustible": "Gasolina de Alto Octanaje",
+          "categoria": "motos",
+          "precio_venta": 28500,
+          "precio_alquiler_hora": 130,
+          "precio_alquiler_dia": 850,
+          "oferta_alquiler": "⭐ Paquete M Sport",
+          "existencia": 3
+        }
+      ]
+    };
+
+    let cart = [];
+
+    // Renderizar catálogo
+    function renderCatalog(items) {
+      const grid = document.getElementById('catalogGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      items.forEach(item => {
+        grid.innerHTML += `
+          <div class="col-md-6 col-lg-3">
+            <div class="card card-jsm h-100">
+              <div class="position-relative">
+                <img src="${item.imagen}" alt="${item.modelo}">
+                <span class="position-absolute top-0 end-0 m-3 badge-jsm-offer">${item.oferta_alquiler}</span>
+              </div>
+              <div class="card-body d-flex flex-column justify-content-between p-3">
+                <div>
+                  <small class="text-purple-neon fw-bold text-uppercase" style="font-size: 10px;">${item.marca} • ${item.tipo}</small>
+                  <h6 class="text-white fw-bold mb-1">${item.modelo}</h6>
+                  <p class="text-muted small mb-2" style="font-size: 11px; height: 32px; overflow: hidden;">${item.caracteristicas}</p>
+                  <div class="d-flex justify-content-between border-top border-secondary pt-2 mb-2" style="font-size: 11px;">
+                    <span class="text-muted">Venta: <strong class="text-white">$${item.precio_venta.toLocaleString()}</strong></span>
+                    <span class="text-muted">Día: <strong class="text-cyan-neon">$${item.precio_alquiler_dia.toLocaleString()}</strong></span>
+                  </div>
+                </div>
+                <div class="d-grid gap-1">
+                  <button class="btn btn-sm btn-outline-info rounded-pill fw-bold" onclick="openRentalModal(${item.codigo})"><i class="fas fa-key me-1"></i> Alquilar</button>
+                  <button class="btn btn-sm btn-purple rounded-pill text-white fw-bold" style="background: var(--jsm-purple);" onclick="addDirectToCart(${item.codigo})"><i class="fas fa-cart-plus me-1"></i> Comprar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    // Filtrar catálogo
+    function filterCatalog(category) {
+      if (category === 'todos') {
+        renderCatalog([...globalCatalog.vehiculos, ...globalCatalog.motos]);
+      } else {
+        renderCatalog(globalCatalog[category] || []);
+      }
+    }
+
+    // Buscar modelos
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        const all = [...globalCatalog.vehiculos, ...globalCatalog.motos];
+        const filtered = all.filter(i => i.modelo.toLowerCase().includes(term) || i.marca.toLowerCase().includes(term));
+        renderCatalog(filtered);
+      });
+    }
+
+    // Abrir Modal Alquiler
+    function openRentalModal(code) {
+      const all = [...globalCatalog.vehiculos, ...globalCatalog.motos];
+      const item = all.find(i => i.codigo === code);
+      if (!item) return;
+
+      document.getElementById('rentalVehicleCode').value = item.codigo;
+      document.getElementById('rentalModalImg').src = item.imagen;
+      document.getElementById('rentalModalTitle').innerText = `${item.marca} ${item.modelo}`;
+      document.getElementById('rentalModalSpecs').innerText = `${item.tipo} • Motor: ${item.motor}`;
+      document.getElementById('rentalDayPrice').innerText = `$${item.precio_alquiler_dia.toLocaleString()}`;
+      document.getElementById('rentalHourPrice').innerText = `$${item.precio_alquiler_hora.toLocaleString()}`;
+      
+      calculateRentalTotal();
+      new bootstrap.Modal(document.getElementById('rentalModal')).show();
+    }
+
+    // Calcular Total Alquiler
+    function calculateRentalTotal() {
+      const code = parseInt(document.getElementById('rentalVehicleCode').value);
+      const all = [...globalCatalog.vehiculos, ...globalCatalog.motos];
+      const item = all.find(i => i.codigo === code);
+      if (!item) return;
+
+      const mode = document.getElementById('rentalModeSelect').value;
+      const duration = parseInt(document.getElementById('rentalDurationInput').value) || 1;
+      const price = mode === 'dia' ? item.precio_alquiler_dia : item.precio_alquiler_hora;
+      const subtotal = price * duration;
+
+      document.getElementById('rentalSubtotalDisplay').innerText = `$${subtotal.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+    }
+
+    // Confirmar Alquiler
+    function confirmRentalToCart() {
+      const code = parseInt(document.getElementById('rentalVehicleCode').value);
+      const all = [...globalCatalog.vehiculos, ...globalCatalog.motos];
+      const item = all.find(i => i.codigo === code);
+      if (!item) return;
+
+      const mode = document.getElementById('rentalModeSelect').value;
+      const duration = parseInt(document.getElementById('rentalDurationInput').value) || 1;
+      const startDate = document.getElementById('rentalStartDate').value;
+      const price = mode === 'dia' ? item.precio_alquiler_dia : item.precio_alquiler_hora;
+      const subtotal = price * duration;
+
+      cart.push({
+        id: Date.now(),
+        item: item,
+        type: 'alquiler',
+        mode: mode,
+        duration: duration,
+        startDate: startDate,
+        deposit: 1200,
+        total: subtotal
+      });
+
+      updateCartBadge();
+      bootstrap.Modal.getInstance(document.getElementById('rentalModal')).hide();
+      Swal.fire({
+        title: '¡Agregado!',
+        text: 'Unidad agregada al carrito con éxito',
+        icon: 'success',
+        background: '#131722',
+        color: '#fff',
+        confirmButtonColor: '#9d4edd'
+      });
+    }
+
+    // Agregar Venta Directa
+    function addDirectToCart(code) {
+      const all = [...globalCatalog.vehiculos, ...globalCatalog.motos];
+      const item = all.find(i => i.codigo === code);
+      if (!item) return;
+      
+      cart.push({
+        id: Date.now(),
+        item: item,
+        type: 'venta',
+        deposit: 0,
+        total: item.precio_venta
+      });
+
+      updateCartBadge();
+      Swal.fire({
+        title: '¡Agregado!',
+        text: 'Vehículo agregado a la orden de compra',
+        icon: 'success',
+        background: '#131722',
+        color: '#fff',
+        confirmButtonColor: '#00f0ff'
+      });
+    }
+
+    function updateCartBadge() {
+      const badge = document.getElementById('cartItemCount');
+      if (badge) badge.innerText = cart.length;
+    }
+
+    function openCartModal() {
+      renderCartItems();
+      new bootstrap.Modal(document.getElementById('cartModal')).show();
+    }
+
+    function renderCartItems() {
+      const list = document.getElementById('cartItemsList');
+      if (!list) return;
+      list.innerHTML = '';
+      let subtotal = 0;
+      let deposit = 0;
+
+      if (cart.length === 0) {
+        list.innerHTML = '<p class="text-muted text-center py-4">El carrito está vacío.</p>';
+      } else {
+        cart.forEach(c => {
+          subtotal += c.total;
+          deposit += c.deposit;
+          list.innerHTML += `
+            <div class="d-flex align-items-center justify-content-between p-2 mb-2 rounded bg-black bg-opacity-40 border border-secondary">
+              <div class="d-flex align-items-center gap-2">
+                <img src="${c.item.imagen}" style="width: 50px; height: 40px; object-fit: cover;" class="rounded">
+                <div>
+                  <strong class="text-white d-block" style="font-size: 12px;">${c.item.marca} ${c.item.modelo}</strong>
+                  <span class="text-muted" style="font-size: 10px;">${c.type.toUpperCase()} ${c.type === 'alquiler' ? `(${c.duration} ${c.mode}s)` : ''}</span>
+                </div>
+              </div>
+              <div class="text-end">
+                <span class="text-cyan-neon fw-bold d-block" style="font-size: 12px;">$${c.total.toLocaleString()}</span>
+                <button class="btn btn-link text-danger p-0 border-0" style="font-size: 10px;" onclick="removeFromCart(${c.id})">Eliminar</button>
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      document.getElementById('cartSubtotalText').innerText = `$${subtotal.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+      document.getElementById('cartDepositText').innerText = `$${deposit.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+      document.getElementById('cartTotalText').innerText = `$${(subtotal + deposit).toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(c => c.id !== id);
+      renderCartItems();
+      updateCartBadge();
+    }
+
+    function clearCart() {
+      cart = [];
+      renderCartItems();
+      updateCartBadge();
+    }
+
+    function fillDemoData() {
+      document.getElementById('clientName').value = "Jerolin Montero";
+      document.getElementById('clientId').value = "001-1988234-5";
+      document.getElementById('clientLicense').value = "DO-99281-VIP";
+      document.getElementById('clientPhone').value = "+1 (809) 555-0199";
+      document.getElementById('clientEmail').value = "jerolin.montero@jsnmotors.com";
+      document.getElementById('clientAddress').value = "Av. Anacaona #105, Santo Domingo";
+    }
+
+    function processCheckoutAndPDF() {
+      if (cart.length === 0) {
+        Swal.fire({ title: 'Carrito Vacío', text: 'Seleccione al menos una unidad.', icon: 'warning', background: '#131722', color: '#fff' });
+        return;
+      }
+
+      const clientName = document.getElementById('clientName').value;
+      const element = document.createElement('div');
+      element.style.padding = '30px';
+      element.style.fontFamily = 'Arial, sans-serif';
+      element.style.color = '#000';
+      element.style.background = '#fff';
+
+      let itemsRows = '';
+      let totalDoc = 0;
+      cart.forEach(c => {
+        totalDoc += c.total + c.deposit;
+        itemsRows += `
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">${c.item.marca} ${c.item.modelo}</td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">${c.type.toUpperCase()}</td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">$${c.total.toLocaleString()}</td>
+          </tr>
+        `;
+      });
+
+      element.innerHTML = `
+        <div style="text-align: center; border-bottom: 2px solid #9d4edd; padding-bottom: 15px; margin-bottom: 20px;">
+          <h1 style="color: #050508; margin: 0;">JSM S.R.L.</h1>
+          <p style="margin: 5px 0; font-size: 12px; color: #666;">CONTRATO Y COMPROBANTE OFICIAL DE RESERVA</p>
+        </div>
+        <div style="margin-bottom: 20px; font-size: 13px;">
+          <strong>Cliente:</strong> ${clientName}<br>
+          <strong>ID/Cédula:</strong> ${document.getElementById('clientId').value}<br>
+          <strong>Fecha:</strong> ${new Date().toLocaleDateString()}<br>
+          <strong>Atendido por:</strong> Jerolin Montero (Representante Oficial)
+        </div>
+        <table style="width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 20px;">
+          <thead>
+            <tr style="background: #f2f2f2;">
+              <th style="padding: 8px; text-align: left;">Unidad</th>
+              <th style="padding: 8px; text-align: left;">Operación</th>
+              <th style="padding: 8px; text-align: left;">Monto</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${itemsRows}
+          </tbody>
+        </table>
+        <div style="text-align: right; font-size: 16px; font-weight: bold; margin-top: 20px;">
+          Total General: $${totalDoc.toLocaleString()} USD
+        </div>
+        <div style="margin-top: 50px; border-top: 1px solid #ccc; pt-10px; text-align: center; font-size: 10px; color: #888;">
+          Documento digital generado automáticamente por la plataforma oficial de JSM S.R.L.
+        </div>
+      `;
+
+      html2pdf().set({
+        margin: 10,
+        filename: `Contrato_JSM_${clientName.replace(/\s+/g, '_')}.pdf`,
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      }).from(element).save();
+
+      Swal.fire({
+        title: '¡Contrato Generado!',
+        text: 'El documento PDF ha sido descargado exitosamente.',
+        icon: 'success',
+        background: '#131722',
+        color: '#fff',
+        confirmButtonColor: '#00f0ff'
+      });
+    }
+
+    // Inicializar cargando todo el catálogo al abrir la página
+    document.addEventListener("DOMContentLoaded", () => {
+      filterCatalog('todos');
+    });
+  </script>
+</body>
+</html>
